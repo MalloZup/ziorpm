@@ -40,14 +40,14 @@ D: found 0 source and 1 binary packages
 
 After the pkg is the right and expected one,  rpm check for 2 diff types of rpms
 
-the Source RPM (SRPM) and the binary RPM. The binary RPM is the mostly used, and srpm are for devs that need the src code of pkg and want to build the pkg.
+- the Source RPM (SRPM) and the binary RPM. The binary RPM is the mostly used, and srpm are for devs that need the src code of pkg and want to build the pkg.
 
-Installing vim for example from a repo, you will always install the binary rpm, without the srmpm.
+Installing vim for example from a repo, you will always install the binary rpm, without the SRPM.
 
-The SRP contain the SPEC file (which describes how to install/remove and build an pkg for RPM) and the actually source code that the resulting binary RPM.
+- The SRPM contain the SPEC file (which describes how to install/remove and build an pkg for RPM) and the actually source code that the resulting binary RPM.
 
 
-Here rpm is installing the  prerequisites and installing the pkg version for the arch.
+Here rpm is checking  prerequisites for the pkg version given the arch.
 
 ```
 D: opening  db index       /var/lib/rpm/Conflictname nofsync:0x400 mode=0x0
@@ -70,7 +70,9 @@ D: ========== tsorting packages (order, #predecessors, #succesors, depth)
 ### Installing pkgs and execute spec basic
 
 
-Once installing rpm, rpm will execute the 
+Once installing rpm, rpm will basically execute what is in specfiles.(execpt from the build option, which is only when building from spec files)
+
+Basically, perform task before the install(changing file permisions etc), during install, and after install. (like execute ldconfig after shared library installed.)
 ```console
 %prep
 cp %{S:0} .
@@ -139,7 +141,7 @@ XZDIO:      10 reads,    18428 total bytes in 0.000920 secs
 
 ```
 
-Updating the database
+For keeping track of pkgs, rpm update his database
 ```console
 D: adding "andromeda-dummy" to Name index.
 D: adding 2 entries to Basenames index.
@@ -169,3 +171,5 @@ D: closed   db index       /var/lib/rpm/Name
 D: closed   db index       /var/lib/rpm/Packages
 D: closed   db environment /var/lib/rpm
 ```
+
+The biggest limitation of rpm -i is that it will not install the dependencies of a pkg, like yum/dnf/zypper pkg manager can do.

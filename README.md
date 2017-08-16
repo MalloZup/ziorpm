@@ -5,7 +5,7 @@ Inside the `rpm -i mypkg` cmd
 
 ### Running the cmd
 
-'rpm -i andromeda-dummy-2.0-1.1.noarch.rpm -vvvv'
+`rpm -i andromeda-dummy-2.0-1.1.noarch.rpm -vvvv`
 
 First the rpm is looking and checking for the rpm signed key.
 
@@ -44,10 +44,12 @@ After the pkg is the right and expected one,  rpm check for 2 diff types of rpms
 
 Installing vim for example from a repo, you will always install the binary rpm, without the SRPM.
 
-- The SRPM contain the SPEC file (which describes how to install/remove and build an pkg for RPM) and the actually source code that the resulting binary RPM.
+- RPMs have always a SPEC file (which describes how to install/remove and build the src contained in a tarball)
 
 
-Here rpm is checking  prerequisites for the pkg version given the arch.
+Here rpm is checking for prerequisites, conflicts and depend. checks for the pkg version given the arch.
+
+In this example the pkg andromeda-dummy is not installed on system
 
 ```
 D: opening  db index       /var/lib/rpm/Conflictname nofsync:0x400 mode=0x0

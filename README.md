@@ -74,7 +74,7 @@ D: ========== tsorting packages (order, #predecessors, #succesors, depth)
 
 Once installing rpm, rpm will basically execute what is in specfiles.(execpt from the build option, which is only when building from spec files)
 
-Basically, perform task before the install(changing file permisions etc), during install, and after install. (like execute ldconfig after shared library installed.)
+Basically, perform task before the install, during install, and after install. (like execute ldconfig after shared library installed.)
 ```console
 %prep
 cp %{S:0} .

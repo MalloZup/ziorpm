@@ -143,7 +143,7 @@ XZDIO:      10 reads,    18428 total bytes in 0.000920 secs
 
 ```
 
-For keeping track of pkgs, rpm update his database
+For keeping track of pkgs, rpm update the database
 ```console
 D: adding "andromeda-dummy" to Name index.
 D: adding 2 entries to Basenames index.
